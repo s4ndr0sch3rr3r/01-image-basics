@@ -1,6 +1,5 @@
 import numpy as np
 import SimpleITK as sitk
-import test_image_basics as ib
 
 
 def load_image(img_path, is_label_img):
@@ -72,7 +71,7 @@ def register_images(img, label_img, atlas_img):
     # the registration returns the transformation of the moving image (parameter img) to the space of
     # the atlas image (atlas_img)
     """
-    registration_method = ib._get_registration_method(atlas_img, img)  # type: sitk.ImageRegistrationMethod
+    registration_method = _get_registration_method(atlas_img, img)  # type: sitk.ImageRegistrationMethod
     transform = registration_method.Execute(atlas_img, img)
 
     # todo: apply the obtained transform to register the image (img) to the atlas image (atlas_img)
