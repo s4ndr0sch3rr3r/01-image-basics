@@ -104,7 +104,7 @@ def test_register():
     TEST_REGISTER tests if the register_images function is implemented correctly.
     """
     img_ = ib.load_image("./data/T1native.nii.gz", False)
-    atlas_img_ = ib.load_image("./data/mni_icbm152_t1_tal_nlin_sym_09a_mask.nii", False)
+    atlas_img_ = ib.load_image("./data/mni_icbm152_t1_tal_nlin_sym_09a.nii.gz", False)
     label_img_ = ib.load_image("./data/labels_native.nii.gz", True)
     if isinstance(atlas_img_, sitk.Image) and isinstance(label_img_, sitk.Image):
         registered_img_, registered_label_ = ib.register_images(
@@ -205,44 +205,3 @@ def test_postprocess_largest_component():
     else:
         post_ok = False
     assert post_ok
-
-def main():
-    # Call all test functions
-    try:
-        print("Testing load_image...")
-        test_load_image()
-        print("load_image test passed.")
-
-        print("Testing to_numpy_array...")
-        test_to_numpy_array()
-        print("to_numpy_array test passed.")
-
-        print("Testing to_sitk_image...")
-        test_to_sitk_image()
-        print("to_sitk_image test passed.")
-
-        print("Testing register_images...")
-        test_register()
-        print("register_images test passed.")
-
-        print("Testing preprocess_rescale_numpy...")
-        test_preprocess_rescale_numpy()
-        print("preprocess_rescale_numpy test passed.")
-
-        print("Testing preprocess_rescale_sitk...")
-        test_preprocess_rescale_sitk()
-        print("preprocess_rescale_sitk test passed.")
-
-        print("Testing extract_feature_median...")
-        test_extract_feature_median()
-        print("extract_feature_median test passed.")
-
-        print("Testing postprocess_largest_component...")
-        test_postprocess_largest_component()
-        print("postprocess_largest_component test passed.")
-
-    except AssertionError as e:
-        print(f"Test failed: {e}")
-
-if __name__ == "__main__":
-    main()
