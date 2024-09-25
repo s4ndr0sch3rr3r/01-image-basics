@@ -104,7 +104,7 @@ def test_register():
     TEST_REGISTER tests if the register_images function is implemented correctly.
     """
     img_ = ib.load_image("./data/T1native.nii.gz", False)
-    atlas_img_ = ib.load_image("./data/mni_icbm152_t1_tal_nlin_sym_09a.nii.gz", False)
+    atlas_img_ = ib.load_image("./data/mni_icbm152_t1_tal_nlin_sym_09a_mask.nii.gz", False)
     label_img_ = ib.load_image("./data/labels_native.nii.gz", True)
     if isinstance(atlas_img_, sitk.Image) and isinstance(label_img_, sitk.Image):
         registered_img_, registered_label_ = ib.register_images(
